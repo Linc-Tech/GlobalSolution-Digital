@@ -1,4 +1,4 @@
-package br.com.fiap.GlobalSolution.entity;
+package br.com.fiap.GlobalSolution.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,26 +14,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity(name = "T_DADOS_BANCARIOS_ONG")
+@Entity(name = "T_IMG_ONG")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name="bankData", sequenceName = "SQ_TB_DADOS_BANCARIOS_ONG", allocationSize = 1)
-public class BankData {
+@SequenceGenerator(name="img", sequenceName = "SQ_TB_IMG_ONG", allocationSize = 1)
+public class Image {
 	
 	@Id
-	@Column(name = "id_conta_bancaria", unique = true)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bankData")
+	@Column(name = "id_img", unique = true)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "img")
 	private int id;
 	
-	@Column(name = "agencia", nullable = false, length = 9)
-	private String agency;	
-	
-	@Column(name = "conta", nullable = false, length = 15)
-	private String account;	
+	@Column(name = "url_img", nullable = false, length = 4000)
+	private String url;
 	
 	@OneToOne
 	@JoinColumn(name="cnpj", nullable = false)
-	private Ong ong;
+	private Ong cnpj;		
 }

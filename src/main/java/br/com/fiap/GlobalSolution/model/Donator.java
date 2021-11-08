@@ -1,4 +1,4 @@
-package br.com.fiap.GlobalSolution.entity;
+package br.com.fiap.GlobalSolution.model;
 
 
 import javax.persistence.Column;
