@@ -9,5 +9,4 @@ public class GlobalSolutionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GlobalSolutionApplication.class, args);
 	}
-
 }
