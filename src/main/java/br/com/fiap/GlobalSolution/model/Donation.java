@@ -20,11 +20,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @SequenceGenerator(name="doacoes", sequenceName = "SQ_TB_DOACOES_ONG", allocationSize = 1)
-public class Donations {
+public class Donation {
 	
 	@Id
 	@Column(name="id_doacao", unique = true)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "end")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "doacoes")
 	private int id;
 	
 	@Column(name="valor", nullable = false)

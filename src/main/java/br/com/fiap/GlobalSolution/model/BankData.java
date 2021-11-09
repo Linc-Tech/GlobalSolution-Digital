@@ -31,9 +31,5 @@ public class BankData {
 	private String agency;	
 	
 	@Column(name = "conta", nullable = false, length = 15)
-	private String account;	
-	
-	@OneToOne
-	@JoinColumn(name="cnpj", nullable = false)
-	private Ong ong;
+	private String account;		
 }
