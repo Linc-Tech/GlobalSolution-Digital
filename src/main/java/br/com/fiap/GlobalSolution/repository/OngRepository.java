@@ -1,9 +1,13 @@
 package br.com.fiap.GlobalSolution.repository;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.fiap.GlobalSolution.model.Ong;
 
-public interface OngRepository extends JpaRepository<Ong, String>{
+import java.util.Optional;
 
+public interface OngRepository extends JpaRepository<Ong, Long>{
+
+    Optional<Ong> findByEmail(String email);
 }
