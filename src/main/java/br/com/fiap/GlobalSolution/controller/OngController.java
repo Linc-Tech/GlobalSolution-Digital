@@ -31,7 +31,7 @@ public class OngController {
 		return ongService.getAllOngs();
 	}
 		
-    @PostMapping    
+    @PostMapping("/create")
 	public String create(@RequestBody Ong ong) {
 		return ongService.addOng(ong);
 	}

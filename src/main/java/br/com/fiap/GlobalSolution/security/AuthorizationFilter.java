@@ -35,7 +35,7 @@ public class AuthorizationFilter extends OncePerRequestFilter {
     }
 
     private void authorize(String token) {
-        Long id = tokenService.getUserId(token);
+        String id = tokenService.getUserId(token);
         Ong ong = ongRepository.findById(id).get();
 
         System.out.println(ong);
