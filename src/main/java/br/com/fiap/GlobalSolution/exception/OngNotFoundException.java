@@ -7,4 +7,7 @@ public class OngNotFoundException extends RuntimeException {
 		super(message);
 	}
 	
+    public OngNotFoundException() {
+        super("User not found with");
+    }
 }

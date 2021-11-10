@@ -1,15 +1,14 @@
 package br.com.fiap.GlobalSolution.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.com.fiap.GlobalSolution.exception.OngAlreedyRegisteredException;
 import br.com.fiap.GlobalSolution.exception.OngNotFoundException;
 import br.com.fiap.GlobalSolution.model.Ong;
 import br.com.fiap.GlobalSolution.repository.OngRepository;
 import lombok.AllArgsConstructor;
+import oracle.net.ano.AuthenticationService;
 
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
@@ -28,8 +27,14 @@ public class OngService {
 		if(ongExists != null) 
 			throw new OngAlreedyRegisteredException("ONG alreedy registered!");		
 		
-		repository.save(ong);			
-		return "OK";
+		ong.setPassword(
+				AuthenticationService
+						.getPasswordEncoder()
+						.encode(ong.getPassword()));
+
+		repository.save(ong);
+
+		return "CRIADO";
 	}
 
 	public String updateOng(Ong ong) {
