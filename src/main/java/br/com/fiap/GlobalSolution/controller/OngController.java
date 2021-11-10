@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.fiap.GlobalSolution.model.Donation;
+import br.com.fiap.GlobalSolution.model.Image;
 import br.com.fiap.GlobalSolution.model.Ong;
 import br.com.fiap.GlobalSolution.service.DonationService;
 import br.com.fiap.GlobalSolution.service.OngService;
@@ -44,6 +45,11 @@ public class OngController {
 	@PostMapping("/donate")    
 	public String donate(@RequestBody Donation donation) {
 		return donationService.donate(donation);
+	}	
+	
+	@PostMapping("/addImg")    
+	public String addImg(@RequestBody Image img) {
+		return ongService.addOngImage(img);
 	}	
 	
 	@PutMapping

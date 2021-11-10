@@ -1,11 +1,17 @@
 package br.com.fiap.GlobalSolution.service;
 
 import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import br.com.fiap.GlobalSolution.exception.OngAlreedyRegisteredException;
 import br.com.fiap.GlobalSolution.exception.OngNotFoundException;
+import br.com.fiap.GlobalSolution.model.Image;
 import br.com.fiap.GlobalSolution.model.Ong;
+import br.com.fiap.GlobalSolution.repository.ImageRepository;
 import br.com.fiap.GlobalSolution.repository.OngRepository;
 import lombok.AllArgsConstructor;
 
@@ -15,10 +21,10 @@ import lombok.AllArgsConstructor;
 public class OngService {
 	
 	private OngRepository repository;
+	private ImageRepository repoImage;
 
 	public List<Ong> getAllOngs() {
-		return repository.findAll();
-			
+		return repository.findAll();	
 	}
 
 	public String addOng(Ong ong) {
@@ -53,6 +59,12 @@ public class OngService {
 			throw new OngNotFoundException("ONG not found");
 				
 		repository.delete(ong);				
+		return "OK";
+	}
+
+	public String addOngImage(@Valid Image img) {
+		repoImage.save(img);
+		
 		return "OK";
 	}
 }

@@ -47,8 +47,10 @@ public class LoginService {
                 ongFound.getPassword(),
                 ongFound.getDescription(),
                 ongFound.getOngUrl(),
-                ongFound.getAddress(),
-                ongFound.getAccount(), token);
+                ongFound.getAddress(),                
+                ongFound.getAccount(), 
+                ongFound.getImage(),
+                ongFound.getDonations(), token);
 
         return ResponseEntity.ok(ongToReturn);
     }

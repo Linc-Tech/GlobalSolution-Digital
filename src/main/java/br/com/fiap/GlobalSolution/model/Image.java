@@ -1,5 +1,6 @@
 package br.com.fiap.GlobalSolution.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,9 +33,13 @@ public class Image {
 	private int id;
 	
 	@Column(name = "url_img", nullable = false, length = 4000)
+	@NotBlank
+	@Size(max = 4000)
 	private String url;
 	
-	@OneToOne
+	@JsonBackReference
+	@OneToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name="cnpj", nullable = false)
-	private Ong cnpj;		
+	@NotBlank
+	private Ong ong;		
 }
