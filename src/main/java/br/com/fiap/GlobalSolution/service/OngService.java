@@ -33,8 +33,7 @@ public class OngService {
 						.encode(ong.getPassword()));
 
 		repository.save(ong);
-
-		return "CRIADO";
+		return "OK";
 	}
 
 	public String updateOng(Ong ong) {

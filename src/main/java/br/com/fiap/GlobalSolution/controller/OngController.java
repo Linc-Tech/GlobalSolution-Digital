@@ -36,7 +36,7 @@ public class OngController {
 		return donationService.getAllDonations(cnpj);
 	}
 	
-    @PostMapping      
+    @PostMapping("/create")    
 	public String create(@RequestBody Ong ong) {
 		return ongService.addOng(ong);
 	}
