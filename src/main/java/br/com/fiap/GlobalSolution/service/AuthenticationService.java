@@ -24,7 +24,7 @@ public class AuthenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<Ong> ong = ongRepository.findByEmail(email);
 
-        if (ong.isEmpty()) {
+        if (!ong.isPresent()) {
             throw new OngNotFoundException();
         }
 

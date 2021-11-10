@@ -2,7 +2,6 @@ package br.com.fiap.GlobalSolution.service;
 
 import br.com.fiap.GlobalSolution.model.Ong;
 import io.jsonwebtoken.*;
-import org.hibernate.boot.model.source.spi.SingularAttributeNature;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;

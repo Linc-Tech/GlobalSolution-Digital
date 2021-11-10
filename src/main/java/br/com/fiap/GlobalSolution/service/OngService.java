@@ -8,7 +8,7 @@ import br.com.fiap.GlobalSolution.exception.OngNotFoundException;
 import br.com.fiap.GlobalSolution.model.Ong;
 import br.com.fiap.GlobalSolution.repository.OngRepository;
 import lombok.AllArgsConstructor;
-import oracle.net.ano.AuthenticationService;
+
 
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
