@@ -48,6 +48,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers(HttpMethod.POST,"/api/v1/gs/create")
                 .permitAll()
+                .antMatchers("/v1/routes/**")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
