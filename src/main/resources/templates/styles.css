@@ -1,0 +1,97 @@
+/*Reset
+----------------------------------------------*/
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", "Lato", "Open Sans", sans-serif;
+  font-size: inherit;
+}
+
+input,
+select,
+iframe,
+button {
+  border: none;
+  font-family: "Open Sans", sans-serif;
+}
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ol,
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  border: none;
+}
+
+header .btn-success {
+  width: 90px;
+}
+
+.margin {
+  margin: 0 50px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50px;
+  height: 80px;
+}
+
+.title {
+  margin-left: 30px;
+  margin: auto;
+  color: #198754;
+  font-weight: bold;
+}
+
+.header-first-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  margin-right: 30px;
+}
+
+.header-second-section {
+  display: flex;
+  align-items: center;
+}
+
+.header-second-section ul {
+  display: flex;
+  margin: auto;
+  padding-right: 50px;
+}
+
+.header-second-section ul li {
+  margin-right: 30px;
+  color: #198754;
+}
+
+.header-second-section ul li a {
+  color: #198754;
+}
+
+.header-second-section ul li a:hover {
+  color: #198754;
+}
