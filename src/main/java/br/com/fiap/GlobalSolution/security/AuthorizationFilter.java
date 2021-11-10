@@ -38,8 +38,6 @@ public class AuthorizationFilter extends OncePerRequestFilter {
         String id = tokenService.getUserId(token);
         Ong ong = ongRepository.findById(id).get();
 
-        System.out.println(ong);
-
         UsernamePasswordAuthenticationToken auth =
                 new UsernamePasswordAuthenticationToken(ong, null, ong.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(auth);

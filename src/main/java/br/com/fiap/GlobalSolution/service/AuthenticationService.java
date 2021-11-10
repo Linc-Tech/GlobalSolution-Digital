@@ -17,7 +17,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthenticationService implements UserDetailsService {
-    @Autowired
+
     private OngRepository ongRepository;
 
     @Override
