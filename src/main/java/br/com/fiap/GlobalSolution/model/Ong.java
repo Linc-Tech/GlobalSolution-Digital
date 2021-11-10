@@ -37,7 +37,7 @@ public class Ong implements UserDetails {
 	@NotBlank
 	private String email;
 	
-	@Column(name = "senha", nullable = false, length = 15)
+	@Column(name = "senha", nullable = false)
 	@NotBlank
 	private String password;
 	

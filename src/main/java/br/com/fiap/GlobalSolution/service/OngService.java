@@ -26,8 +26,13 @@ public class OngService {
 	}
 
 	public String addOng(Ong ong) {
-		repository.save(ong);	
-		
+		ong.setPassword(
+				AuthenticationService
+						.getPasswordEncoder()
+						.encode(ong.getPassword()));
+
+		repository.save(ong);
+
 		return "CRIADO";
 	}
 
