@@ -27,30 +27,38 @@ public class OngController {
 	private DonationService donationService;
 	
 	@GetMapping
-	public List<Ong> getAll() {				
+	public List<Ong> getOngs() {				
 		return ongService.getAllOngs();
 	}
 		
+	@GetMapping("/cnpj={cnpj}")
+	public List<Donation> getDonations(@PathVariable String cnpj) {				
+		return donationService.getAllDonations(cnpj);
+	}
+	
     @PostMapping    
 	public String create(@RequestBody Ong ong) {
 		return ongService.addOng(ong);
 	}
+    
+	@PostMapping("/donate")    
+	public String donate(@RequestBody Donation donation) {
+		return donationService.donate(donation);
+	}	
 	
 	@PutMapping
 	public String update(@RequestBody Ong ong) {
 		return ongService.updateOng(ong);
 	}
 	
+	@PutMapping("/idDonation={id}&statusDonation={status}")
+	public String statusDonation(@PathVariable int id, @PathVariable boolean status) {
+		return donationService.setDonationStatus(id, status);
+	}
+	
 	@DeleteMapping("/cnpj={cnpj}")
 	public String delete(@PathVariable String cnpj) {
 		return ongService.deleteOng(cnpj);
-	}
-	
-	 @PostMapping("/donate")    
-	public String donate(@RequestBody Donation donation) {
-		return donationService.donate(donation);
-	}
-		
-	
-	
+	}		
+
 }

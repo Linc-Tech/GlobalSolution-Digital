@@ -6,4 +6,6 @@ import br.com.fiap.GlobalSolution.model.Ong;
 
 public interface OngRepository extends JpaRepository<Ong, String>{
 	Ong findByCnpj(String cnpj);
+	
+	Ong findByCnpjAndEmail(String cnpj, String email);
 }

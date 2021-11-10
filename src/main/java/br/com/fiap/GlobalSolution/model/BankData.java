@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,8 +28,12 @@ public class BankData {
 	private int id;
 	
 	@Column(name = "agencia", nullable = false, length = 9)
+	@NotBlank
+	@Size(max = 9)
 	private String agency;	
 	
 	@Column(name = "conta", nullable = false, length = 15)
+	@NotBlank
+	@Size(max = 15)
 	private String account;		
 }
