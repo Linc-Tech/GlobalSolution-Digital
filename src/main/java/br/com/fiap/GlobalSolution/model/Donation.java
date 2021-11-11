@@ -41,7 +41,7 @@ public class Donation {
 	@JoinColumn(name="ong_cnpj")
 	private Ong ong;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="id_donator")
 	private Donator donator;
 }
