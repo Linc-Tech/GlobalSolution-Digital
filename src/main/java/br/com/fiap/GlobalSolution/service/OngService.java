@@ -1,6 +1,7 @@
 package br.com.fiap.GlobalSolution.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -28,9 +29,9 @@ public class OngService {
 	}
 
 	public String addOng(Ong ong) {
-		Ong ongExists = repository.findByCnpjAndEmail(ong.getCnpj(), ong.getEmail());
+		Optional<Ong> ongExists = repository.findByEmail(ong.getEmail());
 		
-		if(ongExists != null) 
+		if(!ongExists.isEmpty()) 
 			throw new OngAlreedyRegisteredException("ONG alreedy registered!");		
 		
 		ong.setPassword(

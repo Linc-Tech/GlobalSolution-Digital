@@ -6,6 +6,5 @@ import java.util.Optional;
     
 public interface OngRepository extends JpaRepository<Ong, String>{
 	Ong findByCnpj(String cnpj);
-	Ong findByCnpjAndEmail(String cnpj, String email);
     Optional<Ong> findByEmail(String email);
 }

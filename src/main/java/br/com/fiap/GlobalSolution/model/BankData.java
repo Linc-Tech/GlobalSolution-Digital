@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -28,12 +29,12 @@ public class BankData {
 	private int id;
 	
 	@Column(name = "agencia", nullable = false, length = 9)
-	@NotBlank
-	@Size(max = 9)
+	@NotBlank(message = "O campo Agencia é obrigatório")
+	@Min(value = 9, message = "Insira até 9 caracteres")
 	private String agency;	
 	
 	@Column(name = "conta", nullable = false, length = 15)
-	@NotBlank
-	@Size(max = 15)
+	@NotBlank(message= "O campo Conta é obrigatório")
+	@Min(value = 15, message = "Insira ao menos 15 caracteres")
 	private String account;		
 }
