@@ -52,7 +52,7 @@ public class OngController {
 		}
     	
     	ongService.addOng(ong);    	
-    	return "redirect:/v1/routes/registration";
+    	return "redirect:/registration";
 	}
     
 	@PostMapping("/donate")    
