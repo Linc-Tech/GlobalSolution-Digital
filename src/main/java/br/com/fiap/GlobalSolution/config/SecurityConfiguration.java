@@ -69,6 +69,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .addFilterBefore(new AuthorizationFilter(tokenService, ongRepository), UsernamePasswordAuthenticationFilter.class)
 //        ;
-    }
+  }
 
 }

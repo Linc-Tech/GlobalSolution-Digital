@@ -3,7 +3,7 @@
 	<head th:include="_template :: head">
 	  <meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" th:href="@{~/css/styles.css}">
-		<link rel="stylesheet" type="text/css" th:href="@{~/css/donate.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{~/css/onboarding/registration.css}">
 	  <title>Cadastro</title>	
 	</head>
 	<body>
@@ -58,20 +58,33 @@
             	required
            	/>
           </div>
+			<!-- Password -->
+			<div class="mb-3">
+				<label for="password" class="form-label">Senha</label>
+				<input
+						type="password"
+						class="form-control"
+						name="password"
+						id="password"
+						required
+				/>
+			</div>
+
+			<!-- ConfirmPassword -->
+			<div class="mb-3">
+				<label for="exampleInputPassword2" class="form-label">Confirme sua senha</label>
+				<input
+						type="password"
+						class="form-control"
+						id="exampleInputPassword2"
+						required
+				/>
+			</div>
         </div>
 
         <div class="input-container">
-          <!-- Password -->
-          <div class="mb-3">
-            <label for="password" class="form-label">Senha</label>
-            <input 
-            	type="password" 
-            	class="form-control" 
-            	name="password"
-            	id="password" 
-            	required
-           	/>
-          </div>
+
+
 
           <!-- ConfirmPassword -->
           <div class="mb-3">
@@ -143,17 +156,7 @@
 	            />
           </div>
 
-          <!-- Site link -->
-          <div class="mb-3">
-            <label for="ongUrl" class="form-label">Link do site</label>
-            <input 
-            	type="text" 
-            	class="form-control" 
-            	name="ongUrl"
-            	id="ongUrl" 
-            	aria-describedby="ongUrlHelp"
-           	/>
-          </div>
+
         </div>
 
 
@@ -168,6 +171,18 @@
             	></textarea>
           </div>
 
+
+			<!-- Site link -->
+			<div class="mb-3">
+				<label for="ongUrl" class="form-label">Link do site</label>
+				<input
+						type="text"
+						class="form-control"
+						name="ongUrl"
+						id="ongUrl"
+						aria-describedby="ongUrlHelp"
+				/>
+			</div>
 		 
           <!-- Photo -->
           <!-- <div class="mb-3">
