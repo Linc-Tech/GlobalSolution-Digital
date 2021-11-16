@@ -13,9 +13,8 @@
 <body>
   <header>
     <div class="header-container">
-      <div class="header-first-section">
-        <!-- <img src="./assests/logo.png" class="logo" alt="Linc Tech Logo"/> -->
-        <a href="../../home/ong.html">
+      <div class="header-first-section">        
+        <a href="../../home/ong.html" >
           <p class="title">ONGsUnidas</p>
         </a>
       </div>
@@ -35,67 +34,101 @@
       </div>
     </div>
   </header>
-
-  <div class="settings-container">
-
-
     <div class="form-container margin">
-      <form th:action="@{/home/settings/}+ ${p.cnpj} " method="post">
+      <form th:action="@{/ong/update}" method="post" th:object="${p}">
         <!-- ONG Data -->
         <p class="ong-data-subtitle">Informações da ONG</p>
         <div class="ong-data">
           <div class="input-container" style="margin-left: 0;">
             <!-- ONG Name -->
             <div class="mb-3">
-              <label for="nameInput" class="form-label">Nome da ONG</label>
-              <input th:value="${p.name}" type="text" class="form-control" id="nameInput" aria-describedby="textHelp" required>
+              <label for="name" class="form-label">Nome da ONG</label>
+              <input 
+              	type="text" 
+              	class="form-control" 
+              	name="name"
+              	id="name" 
+              	th:value="${p.name}"               	
+              	required
+              >              
             </div>
 
             <!-- Email -->
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Email</label>
-              <input th:value="${p.email}" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+              <label for="email" class="form-label">Email</label>
+              <input 
+              	type="email" 
+              	class="form-control" 
+              	name="email"
+              	id="email" 
+              	th:value="${p.email}" 
+              	required
+              	/>
             </div>
-
-            <!-- CNPJ -->
+         
+         	<!-- Password -->
             <div class="mb-3">
-              <label for="cnpjInput" class="form-label">CNPJ</label>
-              <input th:value="${p.cnpj}" type="number" class="form-control" id="cnpjInput" aria-describedby="cnpjHelp" required>
+              <label for="password" class="form-label">Senha</label>
+              <input 
+	              type="password" 
+	              class="form-control" 
+	              name="password"
+	              id="password" 	 
+		          required
+              />
             </div>
+            
+            <!-- ConfirmPassword -->
+            <div class="mb-3">
+              <label for="passwordConfirm" class="form-label">Confirme sua senha</label>
+              <input 
+              	type="password" 
+	              class="form-control" 
+	              id="passwordConfirm" 	 
+		          required
+              	>
+            </div>
+         
           </div>
 
           <div class="input-container">
-            <!-- Password -->
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Senha</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" required>
-            </div>
-
-            <!-- ConfirmPassword -->
-            <div class="mb-3">
-              <label for="exampleInputPassword2" class="form-label">Confirme sua senha</label>
-              <input type="password" class="form-control" id="exampleInputPassword2" required>
-            </div>
-
             <!-- Site link -->
             <div class="mb-3">
-              <label for="siteInput" class="form-label">Link do site</label>
-              <input th:value="${p.ongUrl}" type="text" class="form-control" id="siteInput" aria-describedby="cnpjHelp">
+              <label for="ongUrl" class="form-label">Link do site</label>
+              <input 
+	              type="text" 
+	              class="form-control" 
+	              id="ongUrl" 
+	              name="ongUrl"
+	              th:value="${p.ongUrl}" 		 
+              />
             </div>
-          </div>
-
-          <div class="input-container"  style="margin-right: 0;">
-            <!-- ONG description -->
+            
+              <!-- ONG description -->
             <div class="mb-3">
-              <label for="descriptionTextarea" class="form-label">Texto de apresentação da ONG</label>
-              <textarea th:text="${p.description}" class="form-control" id="descriptionTextarea" required></textarea>
+              <label for="description" class="form-label">Texto de apresentação da ONG</label>
+              <textarea 
+              	class="form-control" 
+              	id="description" 
+              	name="description"
+              	th:text="${p.description}" 
+              	>
+              	</textarea>
             </div>
 
-            <!-- Photo -->
-            <div class="mb-3">
-              <label for="photoFile" class="form-label">Carregar foto</label>
-              <input type="file" class="form-control" id="photoFile" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+			 <!-- CNPJ -->
+            <div class="mb-3" style="visibility: hidden">>
+              <label for="cnpj" class="form-label">CNPJ</label>
+              <input 
+              	type="number" 
+              	class="form-control" 
+              	name="cnpj"
+              	id="cnpj" 
+              	th:value="${p.cnpj}" 	 
+              	required
+              />
             </div>
+            
           </div>
         </div>
 
@@ -115,13 +148,27 @@
 
           <!-- Agency -->
           <div class="mb-3 input-container">
-            <label for="agencyInput" class="form-label">Agência</label>
-            <input th:value="${p.account.agency}" type="number" class="form-control" id="agencyInput">
+            <label for="agency" class="form-label">Agência</label>
+            <input 
+            	type="number" 
+            	class="form-control" 
+            	name="account.agency"
+	            id="agency" 
+            	th:value="${p.account.agency}" 
+            	th:field="${p.account.agency}"
+            />
           </div>
 
           <div class="mb-3 input-container" style="margin-right: 0;">
-            <label for="accountInput" class="form-label">Conta</label>
-            <input th:value="${p.account.account}" type="number" class="form-control" id="accountInput">
+            <label for="account" class="form-label">Conta</label>
+            <input 
+            	type="number" 
+            	class="form-control" 
+            	name="account.account"
+	            id="account" 
+            	th:value="${p.account.account}" 
+            	th:field="${p.account.account}"
+            />
           </div>
         </div>
         <div class="buttons-container">
@@ -145,18 +192,9 @@
               <div class="modal-buttons">
                 <div class="modal-btn">
                   <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Cancelar</button>
+                  <a type="button" class="btn btn-success" th:href="@{'/ong/delete/' + ${p.cnpj}}">Confirmar</a>
                 </div>
                 <div class="modal-btn">
-<!--                    <button th:onclick="@{'/ong/delete/'+ p.cnpj" method="delete" class="btn btn-outline-dark" data-bs-dismiss="modal" id="delete" name="delete" th:onclick="@{'/ong/delete/' + p.cnpj}" th:method="delete" >Deletar</button>-->
-
-<!--                  <a th:href="${'ong/delete/' + ${p.cnpj}" >-->
-<!--&lt;!&ndash;                    <button type="button" >&ndash;&gt;-->
-<!--&lt;!&ndash;                      Delete&ndash;&gt;-->
-<!--&lt;!&ndash;                    </button>&ndash;&gt;-->
-<!--                    <span class="btn btn-outline-dark">del</span>-->
-                  </a>
-<!--                    <button class="btn btn-outline-dark" data-bs-dismiss="modal" id="delete" name="delete" th:onclick="@{'/ong/delete/' + ong.cnpj}" th:method="delete" >Deletar</button>-->
-                </div>
               </div>
             </div>
           </div>

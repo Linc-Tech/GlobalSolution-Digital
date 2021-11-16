@@ -31,7 +31,7 @@ public class Donation {
 	private int id;
 	
 	@Column(name="valor", nullable = false)
-	@NotBlank
+	@NotBlank(message ="O valor não pode ser vazio.")
 	private float value;
 	
 	@Column(name="confirmacao", nullable = false)
@@ -44,4 +44,12 @@ public class Donation {
 	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name="id_donator")
 	private Donator donator;
+
+	@Override
+	public String toString() {
+		return "Donation [id=" + id + ", value=" + value + ", confirmation=" + confirmation + ", ong=" + ong
+				+ ", donator=" + donator + "]";
+	}
+	
+	
 }

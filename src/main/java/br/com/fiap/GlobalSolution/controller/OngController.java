@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,13 +33,12 @@ import lombok.AllArgsConstructor;
 
 @Controller
 @RequestMapping("/ong")
+@CrossOrigin(origins = "*")
 @AllArgsConstructor(onConstructor = @__( @Autowired ))
 public class OngController {
 		
 	private OngService ongService;
 	private DonationService donationService;
-	private MessageSource messages;
-	private OngRepository ongRepository;
 	
 	@GetMapping
 	public List<Ong> getOngs() {
@@ -61,19 +61,33 @@ public class OngController {
 	}
     
 	@PostMapping("/donate")
-	public String donate(@RequestBody Donation donation) {
-		return donationService.donate(donation);
+	public String donate(@Valid Donation donation, BindingResult result, RedirectAttributes redirect) {
+		if(result.hasErrors()) {
+			return "error";
+		}
+		
+		donationService.donate(donation);
+		
+		return "redirect:/ongs";
 	}	
 	
 	@PostMapping("/addImg")    
 	public String addImg(@RequestBody Image img) {
-		return ongService.addOngImage(img);
+		
+		return "redirect:/ongs";//ongService.addOngImage(img);
 	}	
 	
 	@PostMapping("/update")
-	public String update(@RequestBody Ong ong, BindingResult result, RedirectAttributes redirect) {
-
-		return ongService.updateOng(ong);
+	public String update(@Valid Ong ong, BindingResult result, RedirectAttributes redirect) {
+		System.out.println(ong.toString());
+		
+		if(result.hasErrors()) {
+			return "redirect:/error";
+		}
+		
+		//ongService.updateOng(ong);
+		
+		return "redirect:/home/settings/" + ong.getCnpj(); 
 	}
 
 	@PutMapping("/idDonation={id}&statusDonation={status}")
@@ -81,25 +95,15 @@ public class OngController {
 		return donationService.setDonationStatus(id, status);
 	}
 	
-	@DeleteMapping("delete/{cnpj}")
-	public ResponseEntity<Ong> delete(@PathVariable String cnpj, BindingResult result, RedirectAttributes redirect, Authentication auth) {
-		System.out.println("passei aqui");
-		Ong ong = (Ong) auth.getPrincipal();
-//		Optional<Ong> ongFound = Optional.ofNullable(ongRepository.findByCnpj(ong.getCnpj()));
-//		if (ong.isEmpty())
-//			ResponseEntity.notFound().build();
-//			return ;
-		ongService.deleteOng(ong.getCnpj());
-		return ResponseEntity.ok().build();
+	@GetMapping("/delete/{cnpj}")
+	public String delete(@PathVariable("cnpj") String cnpj){
+		if(cnpj.length() == 0) {
+			return "redirect:/error";
+			
+		}
+		ongService.deleteOng(cnpj);
+		return "redirect:/index";
 	}
-
-//	@GetMapping("/delete/{cnpj}")
-//	public String delete(@PathVariable("cnpj") String cnpj, Model model, BindingResult result, RedirectAttributes redirect ){
-//		Ong ong = ongRepository.findByCnpj(cnpj);
-//		System.out.println("CNPJ" + ong.getCnpj());
-//		ongRepository.deleteById(cnpj);
-//		return "redirect:/index";
-//	}
 
 
 

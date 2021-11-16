@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import br.com.fiap.GlobalSolution.exception.DonationNotFoundException;
 import br.com.fiap.GlobalSolution.model.Donation;
+import br.com.fiap.GlobalSolution.model.Ong;
 import br.com.fiap.GlobalSolution.repository.DonationRepository;
+import br.com.fiap.GlobalSolution.repository.OngRepository;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -18,11 +20,17 @@ import lombok.AllArgsConstructor;
 public class DonationService {
 
 	private DonationRepository repository;
+	private OngRepository ongRepository;
+
 		
-	public String donate(@Valid Donation donation) {
+	public void donate(@Valid Donation donation) {
+		Ong ong = ongRepository.findByCnpj(donation.getOng().getCnpj());
+		
+		if(ong == null) 
+			return;
+		
+		donation.setOng(ong);		
 		repository.save(donation);
-		
-		return "CRIADO";
 	}
 
 	public List<Donation> getAllDonations(String cnpj) {

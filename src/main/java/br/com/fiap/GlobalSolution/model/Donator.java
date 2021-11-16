@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@SequenceGenerator(name="", sequenceName = "SQ_T_DOADOR", allocationSize = 1)
+@SequenceGenerator(name="doador", sequenceName = "SQ_T_DOADOR", allocationSize = 1)
 public class Donator {
 
 	@Id

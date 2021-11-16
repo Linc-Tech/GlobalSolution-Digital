@@ -19,28 +19,33 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService authenticationService;
+	@Autowired
+	private UserDetailsService authenticationService;
 
-    @Autowired
-    private TokenService tokenService;
+	@Autowired
+	private TokenService tokenService;
 
-    @Autowired
-    private OngRepository ongRepository;
+	@Autowired
+	private OngRepository ongRepository;
 
-    @Override
-    @Bean
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
-    }
+	@Override
+	@Bean
+	protected AuthenticationManager authenticationManager() throws Exception {
+		return super.authenticationManager();
+	}
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(authenticationService)
-                .passwordEncoder(AuthenticationService.getPasswordEncoder());
-    }
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(authenticationService).passwordEncoder(AuthenticationService.getPasswordEncoder());
+	}
 
-
+	
+	/*
+	 * @Override protected void configure(HttpSecurity http) throws Exception {
+	 * http.authorizeRequests().anyRequest().permitAll().and().csrf().disable(); }
+	 */
+	 
+	
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests()
@@ -51,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .disable();
 //
 ////        http.authorizeRequests()
-////                .antMatchers("/api/v1/login")
+////                .antMatchers("/api/v1/login")s
 ////                .permitAll()
 ////                .antMatchers(HttpMethod.POST,"/ong/create")
 ////                .permitAll()

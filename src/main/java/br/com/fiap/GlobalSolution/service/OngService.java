@@ -51,7 +51,15 @@ public class OngService {
 		if(ongExists == null)
 			throw new OngNotFoundException("ONG not found");
 		
+		ong.setDonations(ongExists.getDonations());
+		ong.setPassword(
+				AuthenticationService
+						.getPasswordEncoder()
+						.encode(ong.getPassword()));
+
+		
 		repository.save(ong);	
+		
 		return "OK";
 	}
 

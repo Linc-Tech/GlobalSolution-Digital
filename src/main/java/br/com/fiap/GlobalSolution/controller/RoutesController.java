@@ -41,7 +41,6 @@ public class RoutesController {
 
     @GetMapping("/ongs")
     public String openDonationPage(Model model, Authentication auth) {
-//        Ong ong = (Ong) auth.getPrincipal();
         List<Ong> ongs = ongRepository.findAll();
         model.addAttribute("ongs",ongs);
         return "pages/donate/donate";
