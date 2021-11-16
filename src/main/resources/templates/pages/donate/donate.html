@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:include="_template :: head">
-  <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="../../css/donate/donate.css">
+
   <title>ONGs</title>
 </head>
 <body>
@@ -23,25 +22,21 @@
   </div>
 
   <div class="donate-container margin grid-template-columns">
-    <div class="donate-container-section">
-      <div class="ong-first-section">
+    <div class="donate-container-section" th:each="ong: ${ongs}">
+      <div class="ong-first-section" >
+<!--        <table>-->
+<!--            <tr th:each="ong: ${ongs}">-->
+<!--              <td th:text="${ong.name}"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
         <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-          </p>
+          <p th:text="${ong.description}">
+            </p>
         </div>
 
         <div class="ong-section-bottom">
           <div id="btn-donate">
-            <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Doar</a>
-          </div>
-
-          <div class="donates">
-            <p>+ 200 doações</p>
+            <a th:attr="data-target='#modal-warning'+${ong.cnpj}" href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Doar</a>
           </div>
         </div>
       </div>
@@ -50,100 +45,15 @@
         <img src="../../assests/login-image.jpg" alt="">
       </div>
     </div>
-
-
-    <div class="donate-container-section">
-      <div class="ong-first-section">
-        <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-          </p>
-        </div>
-
-        <div class="ong-section-bottom">
-          <div id="btn-donate">
-            <a href="#" class="btn btn-success">Doar</a>
-          </div>
-
-          <div class="donates">
-            <p>+ 200 doações</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ong-second-section">
-        <img src="../../assests/login-image2.jpg" alt="">
-      </div>
-    </div>
-
-    <div class="donate-container-section">
-      <div class="ong-first-section">
-        <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-          </p>
-        </div>
-
-        <div class="ong-section-bottom">
-          <div id="btn-donate">
-            <a href="#" class="btn btn-success">Doar</a>
-          </div>
-
-          <div class="donates">
-            <p>+ 200 doações</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ong-second-section">
-        <img src="../../assests/login-image3.jpg" alt="">
-      </div>
-    </div>
-
-    <div class="donate-container-section">
-      <div class="ong-first-section">
-        <div class="description">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet magna ex. Consectetur adipiscing elit.
-          </p>
-        </div>
-
-        <div class="ong-section-bottom">
-          <div id="btn-donate">
-            <a href="#" class="btn btn-success">Doar</a>
-          </div>
-
-          <div class="donates">
-            <p>+ 200 doações</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="ong-second-section">
-        <img src="../../assests/login-image4.jpg" alt="">
-      </div>
-    </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="ong-colums">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-xl" >
+      <div class="modal-content" >
+        <div class="modal-body" >
+          <div class="ong-colums" >
             <div class="ong-modal-header">
-              <h4>DOA FÁCIL</h4>
+              <h4 ></h4>
               <div>
                 <a href="#">www.emily_thalita_enchem_o_saco.com.br</a>
               </div>

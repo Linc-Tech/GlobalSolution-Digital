@@ -6,6 +6,8 @@ import java.util.Optional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import br.com.fiap.GlobalSolution.exception.OngAlreedyRegisteredException;
@@ -25,7 +27,7 @@ public class OngService {
 	private ImageRepository repoImage;
 
 	public List<Ong> getAllOngs() {
-		return repository.findAll();	
+		return repository.findAll();
 	}
 
 	public String addOng(Ong ong) {
@@ -46,7 +48,7 @@ public class OngService {
 	public String updateOng(Ong ong) {
 		Ong ongExists = repository.findByCnpj(ong.getCnpj());
 		
-		if(ongExists == null) 
+		if(ongExists == null)
 			throw new OngNotFoundException("ONG not found");
 		
 		repository.save(ong);	
@@ -68,4 +70,19 @@ public class OngService {
 		
 		return "OK";
 	}
+
+
+
+//	public String getOngLogada(){
+//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//		String nome;
+//
+//		if (principal instanceof UserDetails) {
+//			nome = ((UserDetails)principal).getUsername();
+//		} else {
+//			nome = principal.toString();
+//		}
+//		return nome;
+//	}
 }

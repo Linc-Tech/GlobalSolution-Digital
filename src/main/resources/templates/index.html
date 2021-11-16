@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:include="_template :: head">
-  <link rel="stylesheet" th:href="@{./css/index.css}">
+<!--  <link rel="stylesheet" th:href="@{./css/index.css}">-->
   <title>Alimente-se Bem</title>
 </head>
 <body>
@@ -32,7 +32,7 @@
   </div>
   <div class="company-logo margin">
     <div>
-      <img src="assests/logo.png" alt="Linc Tech Logo">
+      <img th:src="@{/images/logo.png}" alt="Linc Tech Logo">
     </div>
   </div>
 </body>

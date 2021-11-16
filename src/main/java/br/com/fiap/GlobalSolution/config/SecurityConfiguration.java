@@ -41,25 +41,32 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/api/v1/login")
-                .permitAll()
-                .antMatchers(HttpMethod.POST,"/ong/create")
-                .permitAll()
-                .antMatchers("/v1/routes/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .csrf()
-                .disable()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .addFilterBefore(new AuthorizationFilter(tokenService, ongRepository), UsernamePasswordAuthenticationFilter.class)
-        ;
-    }
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .anyRequest()
+//                .permitAll()
+//                .and()
+//                .csrf()
+//                .disable();
+//
+////        http.authorizeRequests()
+////                .antMatchers("/api/v1/login")
+////                .permitAll()
+////                .antMatchers(HttpMethod.POST,"/ong/create")
+////                .permitAll()
+////                .antMatchers("/v1/routes/**")
+////                .permitAll()
+////                .anyRequest()
+////                .authenticated()
+////                .and()
+////                .csrf()
+////                .disable()
+////                .sessionManagement()
+////                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+////                .and()
+////                .addFilterBefore(new AuthorizationFilter(tokenService, ongRepository), UsernamePasswordAuthenticationFilter.class)
+////        ;
+//    }
 
 }
