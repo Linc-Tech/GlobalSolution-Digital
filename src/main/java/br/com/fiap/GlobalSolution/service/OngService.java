@@ -51,13 +51,7 @@ public class OngService {
 		if(ongExists == null)
 			throw new OngNotFoundException("ONG not found");
 		
-		ong.setDonations(ongExists.getDonations());
-		ong.setPassword(
-				AuthenticationService
-						.getPasswordEncoder()
-						.encode(ong.getPassword()));
-
-		
+		ong.setPassword(AuthenticationService.getPasswordEncoder().encode(ong.getPassword()));	
 		repository.save(ong);	
 		
 		return "OK";
@@ -78,19 +72,4 @@ public class OngService {
 		
 		return "OK";
 	}
-
-
-
-//	public String getOngLogada(){
-//		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//
-//		String nome;
-//
-//		if (principal instanceof UserDetails) {
-//			nome = ((UserDetails)principal).getUsername();
-//		} else {
-//			nome = principal.toString();
-//		}
-//		return nome;
-//	}
 }

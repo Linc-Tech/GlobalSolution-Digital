@@ -72,21 +72,17 @@ public class OngController {
 	}	
 	
 	@PostMapping("/addImg")    
-	public String addImg(@RequestBody Image img) {
-		
+	public String addImg(@RequestBody Image img) {		
 		return "redirect:/ongs";//ongService.addOngImage(img);
 	}	
 	
 	@PostMapping("/update")
 	public String update(@Valid Ong ong, BindingResult result, RedirectAttributes redirect) {
-		System.out.println(ong.toString());
-		
 		if(result.hasErrors()) {
 			return "redirect:/error";
 		}
-		
-		//ongService.updateOng(ong);
-		
+				
+		ongService.updateOng(ong);		
 		return "redirect:/home/settings/" + ong.getCnpj(); 
 	}
 

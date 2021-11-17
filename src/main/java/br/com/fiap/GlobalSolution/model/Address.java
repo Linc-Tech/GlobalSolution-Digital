@@ -32,7 +32,7 @@ public class Address {
 	@Column(name = "endereco", nullable = false, length = 280)
 	@NotBlank(message = "O campo Endereço é obrigatório")
 	@Min(value = 10, message = "O campo precisa ter ao menos 10 caracteres")
-	@Max(value = 10, message = "O campo não pode ultrapassar 10 caracteres")
+	@Max(value = 280, message = "O campo não pode ultrapassar 10 caracteres")
 	private String address;
 	
 	@Column(name = "cep", nullable = false, length = 8)
