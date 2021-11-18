@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head th:include="_template :: head">
-<!--  <link rel="stylesheet" th:href="@{./css/index.css}">-->
-  <title>Alimente-se Bem</title>
-</head>
+<head th:include="_template :: head"></head>
 <body>
   <header th:include="_template :: header"></header>
 
@@ -25,7 +22,7 @@
       </div>
 
       <div class="buttons">
-        <a href="ongs" class="btn btn-success btn-margin">QUERO DOAR</a>
+        <a href="ong/ongs" class="btn btn-success btn-margin">QUERO DOAR</a>
         <a href="registration" class="btn btn-outline-light">QUERO RECEBER</a>
       </div>
     </div>

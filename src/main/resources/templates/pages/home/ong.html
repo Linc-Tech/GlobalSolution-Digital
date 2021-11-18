@@ -10,21 +10,20 @@
  <header>
   <div class="header-container">
     <div class="header-first-section">
-      <!-- <img src="./assests/logo.png" class="logo" alt="Linc Tech Logo"/> -->
-      <a href="../../index">
+      <a href="/home">
         <p class="title">ONGsUnidas</p>
       </a>
     </div>
     <div class="header-second-section">
       <ul>
         <li>
-          <a href="../home/ong">Dashboard</a>
+          <a href="/home">Dashboard</a>
         </li>
         <li>
-          <a href="../home/donations/">Doações</a>
+          <a href="/home/donations/">Doações</a>
         </li>
         <li>
-          <a href="../home/settings/">Configurações</a>
+          <a href="/home/settings/">Configurações</a>
         </li>
       </ul>
       <a href="/index" class="btn btn-danger">Sair</a>
@@ -32,6 +31,13 @@
   </div>
 </header>
 
-  Dashboard
+ <div class="container-dashboard">
+   <h1>Valor das Doações</h1>
+   <p th:text="${arrecadado}" />
+
+   <h1>Quantidade de Doações</h1>
+   <p th:text="${quantidadeDoacoes}" />
+
+ </div>
 </body>
 </html>

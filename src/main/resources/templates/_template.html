@@ -12,32 +12,25 @@
     <link rel="stylesheet" type="text/css" th:href="@{~/css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{~/css/donate/donate.css}">
     <link rel="stylesheet" type="text/css" th:href="@{~/css/onboarding/registration.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{~/css/global.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{~/css/home/ong.css}">
-
-
 
     <link rel="icon" type="image/png" sizes="16x16" th:href="@{~/images/logo_size_invert.jpg}">
-    <link rel="icon" type="image/png" sizes="16x16" th:href="@{./images/logo_size_invert.jpg}">
-    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/logo_size_invert.jpg}">
+    <title>Alimente-se Bem</title>
 </head>
 
 <header th:fragment="header">
     <div class="header-container">
         <div class="header-first-section">
-            <!-- <img src="./assests/logo.png" class="logo" alt="Linc Tech Logo"/> -->
-            <a href="index">
-                <!-- <p class="title">AlimenteseBem</p> -->
+            <a href="/index">
                 <p class="title">ONGsUnidas</p>
             </a>
         </div>
         <div class="header-second-section">
             <ul>
                 <li>
-                    <a href="index">Início</a>
+                    <a href="/index">Início</a>
                 </li>
                 <li>
-                    <a href="ongs">ONGs</a>
+                    <a href="/ong/ongs">ONGs</a>
                 </li>
             </ul>
             <a href="login" class="btn btn-success">Entrar</a>

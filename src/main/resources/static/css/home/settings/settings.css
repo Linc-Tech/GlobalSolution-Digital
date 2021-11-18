@@ -20,6 +20,10 @@ button.btn-registration {
   width: 200px;
 }
 
+.form-container {
+    margin: 30px 50px 50px;
+}
+
 /* Registration css */
 .registration-title {
   text-align: center;
