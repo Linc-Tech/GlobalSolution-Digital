@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head th:include="_templateDonations :: head"></head>
+<head th:include="_template :: head">
+ <meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" type="text/css"
+	th:href="@{~/css/donate/donate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{~/css/home/ong.css}">
+<title>ONGs</title>
+</head>
 <body>
-	<header th:include="_templateDonations :: header"></header>
+	<header th:include="_template :: header"></header>
 
 	<div class="donate-background"></div>
 	<div class="search-input">
@@ -20,9 +27,6 @@
 	<div class="donate-container margin grid-template-columns">
 		<div class="donate-container-section" th:each="ong: ${ongs}">
 			<div class="ong-first-section">
-				<div class="title">
-					<p th:text="${ong.name}"></p>
-				</div>
 				<div class="description">
 					<p th:text="${ong.description}"></p>
 				</div>
@@ -94,7 +98,7 @@
 													<input 
 														type="email" 
 														class="form-control" 
-														id="email"
+														id="donatorEmail"
 														name="donator.email"
 													/>
 												</div>
@@ -130,6 +134,10 @@
 						</div>
 					</div>
 				</div>
+			</div>
+
+			<div class="ong-second-section">
+				<img src="../../assests/login-image.jpg" alt="">
 			</div>
 		</div>
 	</div>

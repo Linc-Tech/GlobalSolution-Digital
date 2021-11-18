@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-	<head th:include="_templateRegistration :: head"></head>
+	<head th:include="_template :: head">
+	  <meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{~/css/styles.css}">
+		<link rel="stylesheet" type="text/css" th:href="@{~/css/onboarding/registration.css}">
+	  <title>Cadastro</title>	
+	</head>
 	<body>
-  <header th:include="_templateRegistration :: header"></header>
+  <header th:include="_template :: header"></header>
 
   <div class="registration-background"></div>
   <h4 class="registration-title">Cadastrar ONG</h4>
@@ -21,8 +26,7 @@
             <input 
             	type="text" 
             	class="form-control" 
-            	name="name"
-				id="name"
+            	name="name"  
     			required
             />            
           </div>
@@ -163,6 +167,17 @@
 						aria-describedby="ongUrlHelp"
 				/>
 			</div>
+		 
+          <!-- Photo -->
+          <!-- <div class="mb-3">
+            <label for="url" class="form-label">Carregar foto</label>
+            <input 
+            	type="file" 
+            	class="form-control"
+            	name="image.url"
+				id="url" 								
+			/>
+          </div> -->
           
         </div>
       </div>
@@ -173,11 +188,14 @@
         <!-- Bank -->
         <div class="mb-3 input-container" style="margin-left: 0;">
           <label class="form-label" for="inputGroupSelect01">Bancos</label>
-          <select class="form-select" id="inputGroupSelect01">
+          <select class="form-select" id="inputGroupSelect01" name="account.bank">
             <option selected>Selecione...</option>
-            <option value="1">Banco Bradesco</option>
-            <option value="2">Banco Itaú</option>
-            <option value="3">Banco Santander</option>
+            <option value="Bradesco">Bradesco</option>
+            <option value="Itau">Itaú</option>
+            <option value="Santander">Santander</option>
+            <option value="Caixa">Caixa</option>
+            <option value="Banco do Brasil">Banco do Brasil</option>
+            <option value="Outro">Outro</option>
           </select>
         </div>
 
@@ -193,7 +211,7 @@
         </div>
 
         <div class="mb-3 input-container" style="margin-right: 0;">
-          <label for="account" class="form-label">Conta</label>
+          <label for="account" class="form-label"  >Conta</label>
           <input 
           	type="number" 
           	class="form-control"

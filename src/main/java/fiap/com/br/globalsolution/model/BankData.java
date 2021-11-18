@@ -31,4 +31,7 @@ public class BankData {
     @NotBlank(message= "O campo Conta é obrigatório")
     @Min(value = 15, message = "Insira ao menos 15 caracteres")
     private String account;
+    
+    @Column(name = "banco", nullable = false, length = 30)
+	private String bank;
 }
