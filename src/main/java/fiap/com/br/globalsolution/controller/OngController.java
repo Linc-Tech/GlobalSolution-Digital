@@ -41,14 +41,14 @@ public class OngController {
 	public List<Donation> getDonations(@PathVariable String cnpj, Model model) {
 		return donationService.getAllDonations(cnpj);
 	}
-
+	
 	@PostMapping("/create")
-	public String create(@Valid Ong ong, BindingResult result, RedirectAttributes redirect) {
+	public String create(@Valid Ong ong, BindingResult result, RedirectAttributes redirect, Model model) {
 		if (result.hasErrors()) {
 			return "registration";
 		}
 
-		ongService.addOng(ong);
+		ongService.addOng(ong);		
 		return "redirect:/index";
 	}
 

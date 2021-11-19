@@ -1,27 +1,33 @@
 package fiap.com.br.globalsolution.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import java.util.Collection;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import lombok.Data;
+import net.minidev.json.annotate.JsonIgnore;
 
 @Entity(name = "T_ONG")
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Ong implements UserDetails {
     @Id
     @Column(name = "cnpj", unique = true, length = 14)
@@ -30,13 +36,13 @@ public class Ong implements UserDetails {
     private String cnpj;
 
     @Column(name = "nome", nullable = false, length = 60)
-    @NotBlank(message = "O campo Nome é obrigatório")
-    @Min(value = 2, message = "O campo precisa ter ao menos 2 caracteres")
-    @Max(value = 60, message = "O campo não pode ultrapassar 60 caracteres")
+    @NotBlank(message = "{atributte.blank}")
+    @Size(min= 2, max = 60, message = "{name.size}")
     private String name;
 
     @Column(name = "email", nullable = false, length = 190)
     @NotBlank(message = "O campo E-mail é obrigatório")
+    @Email
     @Min(value = 10, message = "O campo precisa ter ao menos 10 caracteres")
     @Max(value = 190, message = "O campo não pode ultrapassar 190 caracteres")
     private String email;
@@ -53,9 +59,7 @@ public class Ong implements UserDetails {
     private String description;
 
     @Column(name = "url_ong", length = 4000)
-    @Size(min = 10, max = 4000, message = "O valor minímo de caracteres é 10")
-    @Min(value = 10, message = "O campo precisa ter ao menos 10 caracteres")
-    @Max(value = 4000, message = "O campo não pode ultrapassar 4000 caracteres")
+    @Size(min = 10, max = 4000, message = "O valor minímo de caracteres é 10")     
     private String ongUrl;
 
     @OneToOne(cascade = CascadeType.ALL)

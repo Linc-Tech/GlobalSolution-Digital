@@ -13,7 +13,7 @@
   <h4 class="registration-title">Cadastrar ONG</h4>
 
   <div class="form-container margin">
-    <form th:action="@{/ong/create}" method="post" th:object="${ong}" >
+    <form th:action="@{/ong/create}" method="post" th:object="${ong}">
       <!-- ONG Data -->
       <p class="ong-data-subtitle">Informações da ONG</p>
       
@@ -26,9 +26,12 @@
             <input 
             	type="text" 
             	class="form-control" 
-            	name="name"  
+            	name="name" 
+            	th:field="*{name}"	
+            	th:classappend="${#fields.hasErrors('name')}?invalid"	            			
     			required
-            />            
+            />    
+            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>                
           </div>
 
           <!-- Email -->
@@ -60,11 +63,11 @@
 			<div class="mb-3">
 				<label for="password" class="form-label">Senha</label>
 				<input
-						type="password"
-						class="form-control"
-						name="password"
-						id="password"
-						required
+					type="password"
+					class="form-control"
+					name="password"
+					id="password"
+					required
 				/>
 			</div>
 
@@ -152,6 +155,7 @@
             	class="form-control" 
             	name="description"
             	id="description"
+            	required
             	></textarea>
           </div>
 

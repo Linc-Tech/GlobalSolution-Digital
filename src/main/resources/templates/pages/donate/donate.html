@@ -9,7 +9,7 @@
 <title>ONGs</title>
 </head>
 <body>
-	<header th:include="_template :: header"></header>
+	<header th:include="_templateDonations :: header"></header>
 
 	<div class="donate-background"></div>
 	<div class="search-input">
@@ -25,7 +25,7 @@
 	</div>
 
 	<div class="donate-container margin grid-template-columns">
-		<div class="donate-container-section" th:each="ong: ${ongs}">
+		<div class="donate-container-section" th:each="ong: ${ongs}"  th:attr="id=${'editModal' + ong.cnpj}">
 			<div class="ong-first-section">
 				<div class="description">
 					<p th:text="${ong.description}"></p>
@@ -34,10 +34,10 @@
 				<div class="ong-section-bottom">
 					<div id="btn-donate">
 						<a th:attr="data-target='#modal-warning'+${ong.cnpj}" th:href="${ong.cnpj}" class="btn btn-success" data-bs-toggle="modal" 
-						data-bs-target="#exampleModal" data-row="${ong}">Doar</a>
-
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						th:data-bs-target="${'#modal' + ong.cnpj}" data-row="${ong}">Doar</a>
+ 						
+						<!-- Modal -->						
+						<div class="modal fade" th:id="${'modal' + ong.cnpj}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-xl">
 								<div class="modal-content">
 									<div class="modal-body">
