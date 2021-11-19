@@ -30,7 +30,9 @@
                     <a href="/index">Início</a>
                 </li>
                 <li>
-                    <a href="/ong/ongs">ONGs</a>
+                    <a href="/ong/ongs" th:classappend="${page=='ong'}?active">
+                    	ONGs                   
+                    </a>
                 </li>
             </ul>
             <a href="login" class="btn btn-success">Entrar</a>

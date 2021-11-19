@@ -30,8 +30,8 @@
             	th:field="*{name}"	
             	th:classappend="${#fields.hasErrors('name')}?invalid"	            			
     			required
-            />    
-            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>                
+            />                
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" />         
           </div>
 
           <!-- Email -->
@@ -41,10 +41,12 @@
             	type="email" 
             	class="form-control" 
             	name="email"
-            	id="email" 
-            	aria-describedby="emailHelp" 
+            	id="email"       
+            	th:field="*{email}"	
+            	th:classappend="${#fields.hasErrors('email')}?invalid"	   	
             	required
            	 />
+           	 <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>     
           </div>
 
           <!-- CNPJ -->

@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head th:include="_template :: head">
- <meta charset="UTF-8">
-<link rel="stylesheet" href="../../styles.css">
-<link rel="stylesheet" type="text/css"
-	th:href="@{~/css/donate/donate.css}">
-<link rel="stylesheet" type="text/css" th:href="@{~/css/home/ong.css}">
-<title>ONGs</title>
-</head>
+<head th:include="_templateDonations :: head"></head>
 <body>
 	<header th:include="_templateDonations :: header"></header>
 
@@ -20,7 +13,7 @@
 
 		<div class="search-input-subtitle">
 			<p>Selecione alguma das ONGs registradas na nossa plataforma para
-				fazer a sua doaÃ§Ã£o... ela pode salvar vidas</p>
+				fazer a sua doação... ela pode salvar vidas</p>
 		</div>
 	</div>
 
@@ -51,13 +44,12 @@
 											</div>
 
 											<div class="ong-modal-footer">
-												<p class="ong-modal-description"
-													th:text="${ong.description}"></p>
+												<p class="ong-modal-description" th:text="${ong.description}"></p>
 												<div>
-													<p class="bank-title">Banco do Bradesco</p>
+													<p class="bank-title" th:text="${'Banco ' + ong.account.bank}"></p>
 													<div class="bank-data">
 														<div>
-															<p>AgÃªncia</p>
+															<p>Agência</p>
 															<p th:text="${ong.account.agency}"></p>
 														</div>
 														<div>
@@ -124,7 +116,7 @@
 												
 												
 												<div class="col-auto">
-													<button type="submit" class="btn btn-success">Confirmar doaÃ§Ã£o</button>
+													<button type="submit" class="btn btn-success">Confirmar doação</button>
 												</div>
 											</form>
 										</div>
