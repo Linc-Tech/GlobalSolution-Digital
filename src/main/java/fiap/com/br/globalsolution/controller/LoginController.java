@@ -23,5 +23,9 @@ public class LoginController {
         return "index";
     }
 
+    @GetMapping("/")
+    public String openIndexPageWithNoUrl() {
+        return "index";
+    }
 
 }

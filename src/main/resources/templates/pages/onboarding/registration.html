@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-	<head th:include="_template :: head">
-	  <meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" th:href="@{~/css/styles.css}">
-		<link rel="stylesheet" type="text/css" th:href="@{~/css/onboarding/registration.css}">
-	  <title>Cadastro</title>	
-	</head>
+	<head th:include="_templateRegistration :: head"></head>
 	<body>
-  <header th:include="_template :: header"></header>
+  <header th:include="_templateRegistration :: header"></header>
 
   <div class="registration-background"></div>
   <h4 class="registration-title">Cadastrar ONG</h4>
@@ -26,7 +21,8 @@
             <input 
             	type="text" 
             	class="form-control" 
-            	name="name" 
+            	name="name"
+				id="name"
             	th:field="*{name}"	
             	th:classappend="${#fields.hasErrors('name')}?invalid"	            			
     			required
@@ -45,7 +41,8 @@
             	aria-describedby="emailHelp" 
             	required
            	 />
-          </div>
+			  <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		  </div>
 
           <!-- CNPJ -->
           <div class="mb-3">
@@ -58,7 +55,8 @@
             	aria-describedby="cnpjHelp" 
             	required
            	/>
-          </div>
+			  <span class="error" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"></span>
+		  </div>
 			<!-- Password -->
 			<div class="mb-3">
 				<label for="password" class="form-label">Senha</label>
