@@ -36,8 +36,8 @@ public class Ong implements UserDetails {
     private String cnpj;
 
     @Column(name = "nome", nullable = false, length = 60)
-    @NotBlank(message = "{atributte.blank}")
-    @Size(min= 2, max = 60, message = "{name.size}")
+    @NotBlank(message = "Este campo é obrigatório ")
+    @Size(min= 2, max = 60, message = "O campo precisa ter entra 2 caracteres a 60 caracteres")
     private String name;
 
     @Column(name = "email", nullable = false, length = 190)

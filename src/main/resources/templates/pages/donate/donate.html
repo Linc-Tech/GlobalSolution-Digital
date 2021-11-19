@@ -47,10 +47,9 @@
 											</div>
 
 											<div class="ong-modal-footer">
-												<p class="ong-modal-description"
-													th:text="${ong.description}"></p>
+												<p class="ong-modal-description" th:text="${ong.description}"></p>
 												<div>
-													<p class="bank-title">Banco do Bradesco</p>
+													<p class="bank-title" th:text="${'Banco ' + ong.account.bank}"></p>
 													<div class="bank-data">
 														<div>
 															<p>Agência</p>

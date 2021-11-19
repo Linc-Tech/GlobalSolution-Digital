@@ -8,6 +8,7 @@
   <h4 class="registration-title">Cadastrar ONG</h4>
 
   <div class="form-container margin">
+	  <span th:if="${error}" class="alert error">Login inválido</span>
     <form th:action="@{/ong/create}" method="post" th:object="${ong}">
       <!-- ONG Data -->
       <p class="ong-data-subtitle">Informações da ONG</p>
@@ -18,30 +19,31 @@
           <!-- ONG Name -->
           <div class="mb-3">
             <label for="name" class="form-label">Nome da ONG</label>
-            <input 
-            	type="text" 
+            <input
+            	type="text"
             	class="form-control" 
             	name="name"
 				id="name"
             	th:field="*{name}"	
             	th:classappend="${#fields.hasErrors('name')}?invalid"	            			
     			required
-            />    
-            <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>                
+            />                
+            <p class="alert alert-danger" th:errors="*{name}" />
           </div>
 
           <!-- Email -->
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input 
-            	type="email" 
+            <input
+            	type="email"
             	class="form-control" 
             	name="email"
-            	id="email" 
-            	aria-describedby="emailHelp" 
+            	id="email"       
+            	th:field="*{email}"	
+            	th:classappend="${#fields.hasErrors('email')}?invalid"	   	
             	required
            	 />
-			  <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+		  	<span class="alert alert-danger" th:errors="*{email}"></span>
 		  </div>
 
           <!-- CNPJ -->
@@ -54,8 +56,10 @@
             	id="cnpj"
             	aria-describedby="cnpjHelp" 
             	required
-           	/>
-			  <span class="error" th:if="${#fields.hasErrors('cnpj')}" th:errors="*{cnpj}"></span>
+				th:field="*{cnpj}"
+				th:classappend="${#fields.hasErrors('cnpj')}?invalid"
+			/>
+		  	<span class="alert alert-danger" th:errors="*{cnpj}"></span>
 		  </div>
 			<!-- Password -->
 			<div class="mb-3">
@@ -66,17 +70,20 @@
 					name="password"
 					id="password"
 					required
+					th:field="*{password}"
+					th:classappend="${#fields.hasErrors('password')}?invalid"
 				/>
+				<span class="alert alert-danger" th:errors="*{password}"></span>
 			</div>
 
 			<!-- ConfirmPassword -->
 			<div class="mb-3">
 				<label for="exampleInputPassword2" class="form-label">Confirme sua senha</label>
 				<input
-						type="password"
-						class="form-control"
-						id="exampleInputPassword2"
-						required
+					type="password"
+					class="form-control"
+					id="exampleInputPassword2"
+					required
 				/>
 			</div>
         </div>
@@ -91,7 +98,10 @@
             	name="address.address"
             	id="address"              	     	       
             	required
+				th:field="*{address.address}"
+				th:classappend="${#fields.hasErrors('address.address')}?invalid"
             />
+		  	<span class="alert alert-danger" th:errors="*{address.address}"></span>
           </div>
 
 		<!-- ONG CEP -->		
@@ -103,7 +113,10 @@
 	            	name="address.cep"
 	            	id="cep"              	        
 	            	required
+					th:field="*{address.cep}"
+					th:classappend="${#fields.hasErrors('address.cep')}?invalid"
 	            />
+			  	<span class="alert alert-danger" th:errors="*{address.cep}"></span>
           </div>
           
           <!-- ONG UF -->	
@@ -115,7 +128,10 @@
 	            	name="address.state"
 	            	id="state"              	        
 	            	required
+					th:field="*{address.state}"
+					th:classappend="${#fields.hasErrors('address.state')}?invalid"
 	            />
+			  	<span class="alert alert-danger" th:errors="*{address.state}"></span>
           </div>
           
           <!-- ONG NUMERO -->	
@@ -127,7 +143,10 @@
 	            	name="address.number"
 	            	id="number"              	        
 	            	required
+					th:field="*{address.number}"
+					th:classappend="${#fields.hasErrors('address.number')}?invalid"
 	            />
+			  	<span class="alert alert-danger" th:errors="*{address.number}"></span>
           </div>
           
           <!-- ONG COMPLEMENTO -->	
@@ -137,8 +156,11 @@
 	            	type="text" 
 	            	class="form-control" 
 	            	name="address.complement"
-	            	id="complement"              	        	            
+	            	id="complement"
+					th:field="*{address.complement}"
+					th:classappend="${#fields.hasErrors('address.complement')}?invalid"
 	            />
+			  	<span class="alert alert-danger" th:errors="*{address.complement}"></span>
           </div>
 
 
@@ -154,7 +176,10 @@
             	name="description"
             	id="description"
             	required
-            	></textarea>
+				th:field="*{description}"
+				th:classappend="${#fields.hasErrors('description')}?invalid"
+			/>
+		  	<span class="alert alert-danger" th:errors="*{description}"></span>
           </div>
 
 
@@ -162,25 +187,17 @@
 			<div class="mb-3">
 				<label for="ongUrl" class="form-label">Link do site</label>
 				<input
-						type="text"
-						class="form-control"
-						name="ongUrl"
-						id="ongUrl"
-						aria-describedby="ongUrlHelp"
+					type="text"
+					class="form-control"
+					name="ongUrl"
+					id="ongUrl"
+					aria-describedby="ongUrlHelp"
+					th:field="*{ongUrl}"
+					th:classappend="${#fields.hasErrors('ongUrl')}?invalid"
 				/>
+				<span class="alert alert-danger" th:errors="*{ongUrl}"></span>
 			</div>
-		 
-          <!-- Photo -->
-          <!-- <div class="mb-3">
-            <label for="url" class="form-label">Carregar foto</label>
-            <input 
-            	type="file" 
-            	class="form-control"
-            	name="image.url"
-				id="url" 								
-			/>
-          </div> -->
-          
+
         </div>
       </div>
 
@@ -209,7 +226,10 @@
           	class="form-control" 
           	name="account.agency"
           	id="agency"
-         	/>
+			th:field="*{account.agency}"
+			th:classappend="${#fields.hasErrors('account.agency')}?invalid"
+		  />
+			<span class="alert alert-danger" th:errors="*{account.agency}"></span>
         </div>
 
         <div class="mb-3 input-container" style="margin-right: 0;">
@@ -219,7 +239,10 @@
           	class="form-control"
           	name="account.account" 
           	id="account"
+			th:field="*{account}"
+			th:classappend="${#fields.hasErrors('account.account')}?invalid"
           />
+			<span class="alert alert-danger" th:errors="*{account.account}"></span>
         </div>
       </div>
       <button type="submit" class="btn btn-success btn-registration">Cadastrar</button>

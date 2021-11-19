@@ -1,37 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-<head th:include="_templateSettings :: settings">
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" th:href="@{~/css/styles.css}">
-<link rel="stylesheet" type="text/css" th:href="@{~/css/ong.css}">
-<link rel="stylesheet" type="text/css" th:href="@{~/css/settings.css}">
-<title>Document</title>
-</head>
+<head th:include="_templateSettings :: settings"></head>
 <body>
-	<header>
-		<div class="header-container">
-			<div class="header-first-section">
-				<a href="../../index">
-					<p class="title">ONGsUnidas</p>
-				</a>
-			</div>
-			<div class="header-second-section">
-				<ul>
-					<li><a href="../">Dashboard</a></li>
-					<li><a href="../donations">Doações</a></li>
-					<li><a href="../settings/">Configurações</a></li>
-				</ul>
-				<a href="../../../index" class="btn btn-danger">Sair</a>
-			</div>
-		</div>
-	</header>
+	<header th:include="_templateSettings :: header"></header>
+
 	<div class="form-container margin">
 		<form th:action="@{/ong/update}" method="post" th:object="${p}">
 			<!-- ONG Data -->
@@ -47,7 +19,8 @@
 							name="name" 
 							id="name"
 							th:value="${p.name}" 
-							th:field="*{name}"																		
+							th:field="*{name}"
+							th:classappend="${#fields.hasErrors('name')}?invalid"
 							required
 							/>
 							<span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>  
@@ -61,7 +34,8 @@
 							class="form-control" 
 							name="email" 
 							id="email"
-							th:value="${p.email}" 
+							th:value="${p.email}"
+							th:classappend="${#fields.hasErrors('email')}?invalid"
 							required 
 						/>
 					</div>
@@ -73,7 +47,8 @@
 							type="password" 
 							class="form-control" 
 							name="password"
-							id="password" 
+							id="password"
+							th:classappend="${#fields.hasErrors('password')}?invalid"
 							required 
 						/>
 					</div>
@@ -85,7 +60,7 @@
 						<input 
 							type="password" 
 							class="form-control"
-							id="passwordConfirm" 
+							id="passwordConfirm"
 							required
 						/>
 					</div>
@@ -98,7 +73,8 @@
 							class="form-control" 
 							id="ongUrl" 
 							name="ongUrl"
-							th:value="${p.ongUrl}" 
+							th:value="${p.ongUrl}"
+							th:classappend="${#fields.hasErrors('ongUrl')}?invalid"
 						/>
 					</div>
 
@@ -114,7 +90,8 @@
 							name="address.address"
 							id="address" 
 							th:value="${p.address.address}"
-							th:field="${p.address.address}" 
+							th:field="${p.address.address}"
+							th:classappend="${#fields.hasErrors('address.address')}?invalid"
 							required 
 						/>
 					</div>
@@ -127,7 +104,8 @@
 							class="form-control" 
 							name="address.cep" 
 							id="cep"
-							th:value="${p.address.cep}" 
+							th:value="${p.address.cep}"
+							th:classappend="${#fields.hasErrors('address.cep')}?invalid"
 							required 
 						/>
 					</div>
@@ -140,7 +118,8 @@
 							class="form-control" 
 							name="address.state" 
 							id="state"
-							th:value="${p.address.state}" 
+							th:value="${p.address.state}"
+							th:classappend="${#fields.hasErrors('address.state')}?invalid"
 							required 
 						/>
 					</div>
@@ -153,7 +132,8 @@
 							class="form-control" 
 							name="address.number"
 							id="number" 
-							th:value="${p.address.number}" 
+							th:value="${p.address.number}"
+							th:classappend="${#fields.hasErrors('address.number')}?invalid"
 							required 
 						/>
 					</div>					
@@ -168,21 +148,22 @@
 							class="form-control" 
 							name="address.complement"
 							id="complement" 
-							th:value="${p.address.complement}" 
+							th:value="${p.address.complement}"
+							th:classappend="${#fields.hasErrors('address.complement')}?invalid"
 						/>
 					</div>	
 							
 					<!-- ONG description -->
 					<div class="mb-3">
 						<label for="description" class="form-label" >
-						Texto de
-							apresentação da ONG</label>
+						Texto de apresentação da ONG</label>
 						<textarea 
 							rows="8" cols="80"
 							class="form-control" 
 							id="description" 
 							name="description"
 							th:text="${p.description}"
+							th:classappend="${#fields.hasErrors('description')}?invalid"
 						>
               			</textarea>
 					</div>
@@ -194,7 +175,8 @@
 							class="form-control" 
 							name="cnpj" 
 							id="cnpj"
-							th:value="${p.cnpj}" 
+							th:value="${p.cnpj}"
+							th:classappend="${#fields.hasErrors('cnpj')}?invalid"
 							required 
 						/>
 					</div>
@@ -206,15 +188,15 @@
 							class="form-control" 
 							name="address.id" 
 							id="address.id"
-							th:value="${p.address.id}" 
-						/>
+							th:value="${p.address.id}"
+							th:classappend="${#fields.hasErrors('address.id')}?invalid"
+						 />
 					</div>
 				</div>
 
 			</div>
 			<!-- ONG Bank Data -->
-			<p class="ong-data-subtitle" style="margin-top: 20px;">Dados
-				Bancários</p>
+			<p class="ong-data-subtitle" style="margin-top: 20px;">Dados Bancários</p>
 			<div class="ong-bank-data">
 				<!-- Bank -->
 				<div class="mb-3 input-container" style="margin-left: 0;">
@@ -232,18 +214,30 @@
 
 				<!-- Agency -->
 				<div class="mb-3 input-container">
-					<label for="agency" class="form-label">Agência</label> <input
-						type="number" class="form-control" name="account.agency"
-						id="agency" th:value="${p.account.agency}"
-						th:field="${p.account.agency}" />
+					<label for="agency" class="form-label">Agência</label>
+					<input
+						type="number"
+						class="form-control"
+						name="account.agency"
+						id="agency"
+						th:value="${p.account.agency}"
+						th:field="${p.account.agency}"
+						th:classappend="${#fields.hasErrors('account.agency')}?invalid"
+					/>
 				</div>
 
 				<!-- Account -->
 				<div class="mb-3 input-container" style="margin-right: 0;">
-					<label for="account" class="form-label">Conta</label> <input
-						type="number" class="form-control" name="account.account"
-						id="account" th:value="${p.account.account}"
-						th:field="${p.account.account}" />
+					<label for="account" class="form-label">Conta</label>
+					<input
+						type="number"
+						class="form-control"
+						name="account.account"
+						id="account"
+						th:value="${p.account.account}"
+						th:field="${p.account.account}"
+						th:classappend="${#fields.hasErrors('account.account')}?invalid"
+					/>
 				</div>
 				
 				<!-- ID -->
@@ -253,7 +247,7 @@
 						class="form-control" 
 						name="account.id" 
 						id="id"
-						th:value="${p.account.id}" 
+						th:value="${p.account.id}"
 					/>
 				</div>
 			</div>

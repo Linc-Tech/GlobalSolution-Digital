@@ -45,7 +45,7 @@ public class OngController {
 	@PostMapping("/create")
 	public String create(@Valid Ong ong, BindingResult result, RedirectAttributes redirect, Model model) {
 		if (result.hasErrors()) {
-			return "registration";
+			return "pages/onboarding/registration";
 		}
 
 		ongService.addOng(ong);		
@@ -59,7 +59,6 @@ public class OngController {
 		}
 
 		donationService.donate(donation);
-
 		return "redirect:/ong/ongs";
 	}
 
@@ -71,7 +70,7 @@ public class OngController {
 	@PostMapping("/update")
 	public String update(@Valid Ong ong, BindingResult result, RedirectAttributes redirect) {
 		if (result.hasErrors()) {
-			return "redirect:/error";
+			return "pages/home/settings";
 		}
 
 		ongService.updateOng(ong);

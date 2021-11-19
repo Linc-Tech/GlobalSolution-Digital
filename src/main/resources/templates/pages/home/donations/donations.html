@@ -24,7 +24,7 @@
 			<div class="single-donation-container">
 				<div class="single-donation-container-first-child" th:each="doacao : ${doacoes}" th:if="${doacao.pending}">
 					<div class="colum-single-donation">
-						
+
 						<!-- Doador -->
 						<div class="donation-row">
 							<div class="row">
@@ -35,7 +35,7 @@
 							</div>
 						</div>
 
-						
+
 						<!-- CPF -->
 						<div class="donation-row">
 							<div class="row">
@@ -55,7 +55,7 @@
 								<p th:text="${doacao.donator.email}"></p>
 							</div>
 						</div>
-						
+
 					</div>
 						<div class="colum-single-donation donation-value-container">
 							<div class="row">
@@ -65,21 +65,19 @@
 								<p th:text="${doacao.value}"></p>
 							</div>
 						</div>
-				
+
 
 
 					<!-- Buttons -->
 					<div class="donation-buttons">
 						<div id="btn-donation">
 							<a th:attr="data-target='#modal'+${doacao.ong.cnpj}" th:href="${doacao.id}" class="btn btn-success" data-bs-toggle="modal"
-								th:data-bs-target="${'#modal' + doacao.id}" data-row="${doacao}">Confirmar Doação</a>
+								th:data-bs-target="${'#modal' + doacao.ong.cnpj}" data-row="${doacao}">Confirmar Doação</a>
 						</div>
 						<div id="btn-decline">
-						<!--  	<a href="#staticBackdrop" class="btn btn-danger"
-								data-bs-toggle="modal" data-bs-target="#staticBackdrop">Declinar</a>-->
 							<a th:attr="data-target='#modal-decline'+${doacao.id}" th:href="${doacao.id}" class="btn btn-danger" data-bs-toggle="modal"
-								th:data-bs-target="${'#modal' + doacao.id}" data-row="${doacao}">Declinar</a>
-								
+								th:data-bs-target="${'#modal-decline' + doacao.id}" data-row="${doacao}">Declinar</a>
+
 						</div>
 					</div>
 					<!-- Modal Confirm-->
@@ -101,9 +99,9 @@
 							</div>
 						</div>
 					</div>
-				
+
 					<!-- Modal Decline -->
-					<div class="modal fade" id="${'modal-decline' + doacao.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal fade" th:id="${'modal-decline' + doacao.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-body">
@@ -114,15 +112,15 @@
 												data-bs-dismiss="modal" id="btn-cancel-decline">Cancelar</button>
 										</div>
 										<div class="modal-btn">
-											<a type="button" class="btn btn-success" th:href="@{'/ong/statusDonation=false&idDonation=' + ${doacao.id}}">Declinar</a>											
+											<a type="button" class="btn btn-success" th:href="@{'/ong/statusDonation=false&idDonation=' + ${doacao.id}}">Declinar</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				
-				
+
+
 				</div>
 				<hr>
 			</div>
