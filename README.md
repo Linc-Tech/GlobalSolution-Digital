@@ -1,9 +1,16 @@
 ### Integrantes 
+
+
 86501 - Emily Vasconcelos
+<br>
 84826 - Gabriel Carvalho Fernandes
+<br>
 85931 - Gabriel Lucas Alves Da Silva
+<br>
 86263 - Larissa Soares Santos Oliveira
+<br>
 86178 - Mateus Ramos Martins
+<br>
 86524 - Thalita Feitosa Da Silva
 
 #### Link do Vídeo
