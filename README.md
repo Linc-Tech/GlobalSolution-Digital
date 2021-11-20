@@ -1,4 +1,4 @@
-###Integrantes 
+### Integrantes 
 86501 - Emily Vasconcelos
 84826 - Gabriel Carvalho Fernandes
 85931 - Gabriel Lucas Alves Da Silva
@@ -6,10 +6,10 @@
 86178 - Mateus Ramos Martins
 86524 - Thalita Feitosa Da Silva
 
-###Link do Vídeo
+#### Link do Vídeo
 https://youtu.be/r4OvShy6XQg
 
-### Configuração do backend
+#### Configuração do backend
 
 O nosso backend conta com o uso de uma lib chamada “lombok” e, ela é configurada de forma diferente quando utilizado com o Eclipse. Portanto, aconselhamos que faça a instalação do IntelliJ IDE para não correr riscos de falhas tendo em vista que ele executa essa configuração automaticamente. Caso contrário, siga o passo-a-passo desse site para configurar o lombok no Eclipse - https://dicasdejava.com.br/como-configurar-o-lombok-no-eclipse/.
 
@@ -27,8 +27,6 @@ O nosso backend conta com o uso de uma lib chamada “lombok” e, ela é config
    **Observações**
 
 - O nosso projeto está sendo realizado em Maven, portanto, para importá-lo no IntelliJ é necessário encontrar o **pom.xml** da aplicação e selecioná-la, senão, a IDE não conseguirá baixar as dependências do Maven e reconhecê-lo como um projeto Maven.
-
-   <img width="479" alt="foto-pom" src="https://user-images.githubusercontent.com/61299646/136713290-f15b09a0-4cde-401f-b49b-d4c21727845d.png">
 
 #### Configurando o banco de dados
 
