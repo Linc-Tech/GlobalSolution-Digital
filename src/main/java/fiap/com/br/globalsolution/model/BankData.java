@@ -1,13 +1,19 @@
 package fiap.com.br.globalsolution.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
 @Entity(name = "T_DADOS_BANCARIOS_ONG")
 @Data
@@ -31,4 +37,9 @@ public class BankData {
     @NotBlank(message= "O campo Conta é obrigatório")
     @Min(value = 15, message = "Insira ao menos 15 caracteres")
     private String account;
+    
+    @NotBlank(message= "O campo Banco é obrigatório")
+    @Max(value = 30, message = "Insira ao menos 30 caracteres")
+    @Column(name = "banco", nullable = false, length = 30)
+  	private String bank;
 }

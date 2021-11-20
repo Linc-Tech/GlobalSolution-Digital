@@ -176,6 +176,17 @@
 							required
 						/>
 					</div>
+					
+					<!-- ADDRESS ID -->
+					<div class="mb-3" style="visibility: hidden">
+						 <input
+							type="number" 
+							class="form-control" 
+							name="address.id" 
+							id="address.id"
+							th:value="${p.address.id}" 
+						/>
+					</div>
 				</div>
 
 			</div>
@@ -185,12 +196,15 @@
 			<div class="ong-bank-data">
 				<!-- Bank -->
 				<div class="mb-3 input-container" style="margin-left: 0;">
-					<label class="form-label" for="inputGroupSelect01">Bancos</label> <select
-						class="form-select" id="inputGroupSelect01">
-						<option selected>Selecione...</option>
-						<option value="1">Banco Bradesco</option>
-						<option value="2">Banco ItaÃº</option>
-						<option value="3">Banco Santander</option>
+					<label class="form-label" for="bancos">Bancos</label> 
+					<select class="form-select" id="bancos" name="account.bank">
+						<option selected th:text="${p.account.bank}"></option>
+			            <option value="Bradesco">Bradesco</option>
+			            <option value="Itau">Itaú</option>
+			            <option value="Santander">Santander</option>
+			            <option value="Caixa">Caixa</option>
+			            <option value="Banco do Brasil">Banco do Brasil</option>
+			            <option value="Outro">Outro</option>
 					</select>
 				</div>
 
@@ -208,6 +222,17 @@
 						type="number" class="form-control" name="account.account"
 						id="account" th:value="${p.account.account}"
 						th:field="${p.account.account}" />
+				</div>
+				
+				<!-- ID -->
+				<div class="mb-3" style="visibility: hidden">
+					<input
+						type="number" 
+						class="form-control" 
+						name="account.id" 
+						id="id"
+						th:value="${p.account.id}" 
+					/>
 				</div>
 			</div>
 			<div class="buttons-container">

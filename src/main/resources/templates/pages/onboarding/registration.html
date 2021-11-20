@@ -1,209 +1,145 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
-	<head th:include="_templateRegistration :: head"></head>
-	<body>
-  <header th:include="_templateRegistration :: header"></header>
+<head th:include="_templateRegistration :: head"></head>
+<body>
+	<header th:include="_templateRegistration :: header"></header>
 
-  <div class="registration-background"></div>
-  <h4 class="registration-title">Cadastrar ONG</h4>
+	<div class="registration-background"></div>
+	<h4 class="registration-title">Cadastrar ONG</h4>
 
-  <div class="form-container margin">
-    <form th:action="@{/ong/create}" method="post" th:object="${ong}" >
-      <!-- ONG Data -->
-      <p class="ong-data-subtitle">Informações da ONG</p>
-      
-      <div class="ong-data">
-        <div class="input-container" style="margin-left: 0;">
-        
-          <!-- ONG Name -->
-          <div class="mb-3">
-            <label for="name" class="form-label">Nome da ONG</label>
-            <input 
-            	type="text" 
-            	class="form-control" 
-            	name="name"
-				id="name"
-    			required
-            />            
-          </div>
+	<div class="form-container margin">
+		<form th:action="@{/ong/create}" method="post" th:object="${ong}">
+			<!-- ONG Data -->
+			<p class="ong-data-subtitle">Informações da ONG</p>
 
-          <!-- Email -->
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input 
-            	type="email" 
-            	class="form-control" 
-            	name="email"
-            	id="email" 
-            	aria-describedby="emailHelp" 
-            	required
-           	 />
-          </div>
+			<div class="ong-data">
+				<div class="input-container" style="margin-left: 0;">
 
-          <!-- CNPJ -->
-          <div class="mb-3">
-            <label for="cnpj" class="form-label">CNPJ</label>
-            <input 
-            	type="number" 
-            	class="form-control" 
-            	name="cnpj"
-            	id="cnpj"
-            	aria-describedby="cnpjHelp" 
-            	required
-           	/>
-          </div>
-			<!-- Password -->
-			<div class="mb-3">
-				<label for="password" class="form-label">Senha</label>
-				<input
-						type="password"
-						class="form-control"
-						name="password"
-						id="password"
-						required
-				/>
+					<!-- ONG Name -->
+					<div class="mb-3">
+						<label for="name" class="form-label">Nome da ONG</label> <input
+							type="text" class="form-control" name="name" id="name" required />
+					</div>
+
+					<!-- Email -->
+					<div class="mb-3">
+						<label for="email" class="form-label">Email</label> <input
+							type="email" class="form-control" name="email" id="email"
+							aria-describedby="emailHelp" required />
+					</div>
+
+					<!-- CNPJ -->
+					<div class="mb-3">
+						<label for="cnpj" class="form-label">CNPJ</label> <input
+							type="number" class="form-control" name="cnpj" id="cnpj"
+							aria-describedby="cnpjHelp" required />
+					</div>
+					<!-- Password -->
+					<div class="mb-3">
+						<label for="password" class="form-label">Senha</label> <input
+							type="password" class="form-control" name="password"
+							id="password" required />
+					</div>
+
+					<!-- ConfirmPassword -->
+					<div class="mb-3">
+						<label for="exampleInputPassword2" class="form-label">Confirme
+							sua senha</label> <input type="password" class="form-control"
+							id="exampleInputPassword2" required />
+					</div>
+				</div>
+
+				<div class="input-container">
+					<!-- ONG Address -->
+					<div class="mb-3">
+						<label for="address" class="form-label">Endereço</label> <input
+							type="text" class="form-control" name="address.address"
+							id="address" required />
+					</div>
+
+					<!-- ONG CEP -->
+					<div class="mb-3">
+						<label for="cep" class="form-label">CEP</label> <input
+							type="number" class="form-control" name="address.cep" id="cep"
+							required />
+					</div>
+
+					<!-- ONG UF -->
+					<div class="mb-3">
+						<label for="state" class="form-label">Estado</label> <input
+							type="text" class="form-control" name="address.state" id="state"
+							required />
+					</div>
+
+					<!-- ONG NUMERO -->
+					<div class="mb-3">
+						<label for="number" class="form-label">Número</label> <input
+							type="text" class="form-control" name="address.number"
+							id="number" required />
+					</div>
+
+					<!-- ONG COMPLEMENTO -->
+					<div class="mb-3">
+						<label for="complement" class="form-label">Complemento</label> <input
+							type="text" class="form-control" name="address.complement"
+							id="complement" />
+					</div>
+
+
+				</div>
+
+
+				<div class="input-container" style="margin-right: 0;">
+					<!-- ONG description -->
+					<div class="mb-3">
+						<label for="description" class="form-label">Texto de
+							apresentação da ONG</label>
+						<textarea class="form-control" name="description" id="description"></textarea>
+					</div>
+
+
+					<!-- Site link -->
+					<div class="mb-3">
+						<label for="ongUrl" class="form-label">Link do site</label> <input
+							type="text" class="form-control" name="ongUrl" id="ongUrl"
+							aria-describedby="ongUrlHelp" />
+					</div>
+				</div>
 			</div>
 
-			<!-- ConfirmPassword -->
-			<div class="mb-3">
-				<label for="exampleInputPassword2" class="form-label">Confirme sua senha</label>
-				<input
-						type="password"
-						class="form-control"
-						id="exampleInputPassword2"
-						required
-				/>
+			<!-- ONG Bank Data -->
+			<p class="ong-data-subtitle" style="margin-top: 20px;">Dados
+				Bancários</p>
+			<div class="ong-bank-data">
+				<!-- Bank -->
+				<div class="mb-3 input-container" style="margin-left: 0;">
+					<label class="form-label" for="inputGroupSelect01">Bancos</label> <select
+						class="form-select" id="inputGroupSelect01" name="account.bank">
+						<option selected>Selecione...</option>
+						<option value="Bradesco">Bradesco</option>
+						<option value="Itau">Ita�</option>
+						<option value="Santander">Santander</option>
+						<option value="Caixa">Caixa</option>
+						<option value="Banco do Brasil">Banco do Brasil</option>
+						<option value="Outro">Outro</option>
+					</select>
+				</div>
+
+				<!-- Agency -->
+				<div class="mb-3 input-container">
+					<label for="agency" class="form-label">Agência</label> <input
+						type="number" class="form-control" name="account.agency"
+						id="agency" />
+				</div>
+
+				<div class="mb-3 input-container" style="margin-right: 0;">
+					<label for="account" class="form-label">Conta</label> <input
+						type="number" class="form-control" name="account.account"
+						id="account" />
+				</div>
 			</div>
-        </div>
-
-        <div class="input-container">
-		 <!-- ONG Address -->		
-          <div class="mb-3">
-            <label for="address" class="form-label">Endereço</label>
-            <input 
-            	type="text" 
-            	class="form-control" 
-            	name="address.address"
-            	id="address"              	     	       
-            	required
-            />
-          </div>
-
-		<!-- ONG CEP -->		
-		  <div class="mb-3">
-	            <label for="cep" class="form-label">CEP</label>
-	            <input 
-	            	type="number" 
-	            	class="form-control" 
-	            	name="address.cep"
-	            	id="cep"              	        
-	            	required
-	            />
-          </div>
-          
-          <!-- ONG UF -->	
-          <div class="mb-3">
-	            <label for="state" class="form-label">Estado</label>
-	            <input 
-	            	type="text" 
-	            	class="form-control" 
-	            	name="address.state"
-	            	id="state"              	        
-	            	required
-	            />
-          </div>
-          
-          <!-- ONG NUMERO -->	
-          <div class="mb-3">
-	            <label for="number" class="form-label">Número</label>
-	            <input 
-	            	type="text" 
-	            	class="form-control" 
-	            	name="address.number"
-	            	id="number"              	        
-	            	required
-	            />
-          </div>
-          
-          <!-- ONG COMPLEMENTO -->	
-          <div class="mb-3">
-	            <label for="complement" class="form-label">Complemento</label>
-	            <input 
-	            	type="text" 
-	            	class="form-control" 
-	            	name="address.complement"
-	            	id="complement"              	        	            
-	            />
-          </div>
-
-
-        </div>
-
-
-        <div class="input-container"  style="margin-right: 0;">
-          <!-- ONG description -->
-          <div class="mb-3">
-            <label for="description" class="form-label">Texto de apresentação da ONG</label>
-            <textarea 
-            	class="form-control" 
-            	name="description"
-            	id="description"
-            	></textarea>
-          </div>
-
-
-			<!-- Site link -->
-			<div class="mb-3">
-				<label for="ongUrl" class="form-label">Link do site</label>
-				<input
-						type="text"
-						class="form-control"
-						name="ongUrl"
-						id="ongUrl"
-						aria-describedby="ongUrlHelp"
-				/>
-			</div>
-          
-        </div>
-      </div>
-
-      <!-- ONG Bank Data -->
-      <p class="ong-data-subtitle" style="margin-top: 20px;">Dados Bancários</p>
-      <div class="ong-bank-data">
-        <!-- Bank -->
-        <div class="mb-3 input-container" style="margin-left: 0;">
-          <label class="form-label" for="inputGroupSelect01">Bancos</label>
-          <select class="form-select" id="inputGroupSelect01">
-            <option selected>Selecione...</option>
-            <option value="1">Banco Bradesco</option>
-            <option value="2">Banco Itaú</option>
-            <option value="3">Banco Santander</option>
-          </select>
-        </div>
-
-        <!-- Agency -->
-        <div class="mb-3 input-container" >
-          <label for="agency" class="form-label">Agência</label>
-          <input 
-          	type="number" 
-          	class="form-control" 
-          	name="account.agency"
-          	id="agency"
-         	/>
-        </div>
-
-        <div class="mb-3 input-container" style="margin-right: 0;">
-          <label for="account" class="form-label">Conta</label>
-          <input 
-          	type="number" 
-          	class="form-control"
-          	name="account.account" 
-          	id="account"
-          />
-        </div>
-      </div>
-      <button type="submit" class="btn btn-success btn-registration">Cadastrar</button>
-    </form>
-  </div>
+			<button type="submit" class="btn btn-success btn-registration">Cadastrar</button>
+		</form>
+	</div>
 </body>
 </html>
