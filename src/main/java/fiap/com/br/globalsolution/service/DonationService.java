@@ -27,7 +27,8 @@ public class DonationService {
 		if(ong == null) 
 			return;
 		
-		donation.setOng(ong);		
+		donation.setOng(ong);
+		donation.setPending(true);
 		repository.save(donation);
 	}
 
@@ -43,6 +44,7 @@ public class DonationService {
 		}
 		
 		donation.get().setConfirmation(status);
+		donation.get().setPending(false);
 		repository.save(donation.get());	
 		
 		return "succes";		

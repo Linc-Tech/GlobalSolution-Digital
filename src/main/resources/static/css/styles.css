@@ -8,6 +8,15 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
 body {
   font-family: "Montserrat", "Lato", "Open Sans", sans-serif;
   font-size: inherit;

@@ -1,0 +1,72 @@
+CREATE TABLE t_dados_bancarios_ong (
+    id_conta_bancaria  NUMBER(10) NOT NULL,
+    agencia            VARCHAR2(9) NOT NULL,
+    conta              VARCHAR2(15) NOT NULL,
+    banco              VARCHAR2(30) NOT NULL
+);
+
+ALTER TABLE t_dados_bancarios_ong ADD CONSTRAINT t_dados_bancarios_ong_pk PRIMARY KEY ( id_conta_bancaria );
+
+CREATE TABLE t_doacoes_ong (
+    id_doacao    NUMBER(10) NOT NULL,
+    cnpj         VARCHAR2(14) NOT NULL,
+    id_doador    NUMBER(10) NOT NULL,
+    cpf          VARCHAR2(11) NOT NULL,
+    valor        FLOAT NOT NULL,
+    confirmacao  CHAR(1) NOT NULL,
+    pendente     CHAR(1) NOT NULL
+);
+
+ALTER TABLE t_doacoes_ong
+    ADD CONSTRAINT t_doacoes_ong_pk PRIMARY KEY ( id_doacao,
+                                                  id_doador,
+                                                  cnpj );
+
+CREATE TABLE t_doador (
+    id_doador  NUMBER(10) NOT NULL,
+    cpf        VARCHAR2(11) NOT NULL,
+    nome       VARCHAR2(60) NOT NULL,
+    email      VARCHAR2(190) NOT NULL
+);
+
+ALTER TABLE t_doador ADD CONSTRAINT t_doador_pk PRIMARY KEY ( id_doador );
+
+CREATE TABLE t_endereco_ong (
+    id_endereco  NUMBER(10) NOT NULL,
+    endereco     VARCHAR2(280) NOT NULL,
+    cep          NUMBER(8) NOT NULL,
+    estado       VARCHAR2(2) NOT NULL,
+    numero       VARCHAR2(10) NOT NULL,
+    complemento  VARCHAR2(30)
+);
+
+ALTER TABLE t_endereco_ong ADD CONSTRAINT pk_t_endereco_ong PRIMARY KEY ( id_endereco );
+
+CREATE TABLE t_ong (
+    cnpj               VARCHAR2(14) NOT NULL,
+    id_endereco        NUMBER(10) NOT NULL,
+    id_conta_bancaria  NUMBER(10) NOT NULL,
+    nome               VARCHAR2(60) NOT NULL,
+    email              VARCHAR2(190) NOT NULL,
+    senha              VARCHAR2(255) NOT NULL,
+    descricao          VARCHAR2(250),
+    url_ong            VARCHAR2(4000)
+);
+
+ALTER TABLE t_ong ADD CONSTRAINT pk_t_ong PRIMARY KEY ( cnpj );
+
+ALTER TABLE t_doacoes_ong
+    ADD CONSTRAINT t_doacoes_ong_t_doador_fk FOREIGN KEY ( id_doador )
+        REFERENCES t_doador ( id_doador );
+
+ALTER TABLE t_doacoes_ong
+    ADD CONSTRAINT t_doacoes_ong_t_ong_fk FOREIGN KEY ( cnpj )
+        REFERENCES t_ong ( cnpj );
+
+ALTER TABLE t_ong
+    ADD CONSTRAINT t_ong_t_dados_bancarios_ong_fk FOREIGN KEY ( id_conta_bancaria )
+        REFERENCES t_dados_bancarios_ong ( id_conta_bancaria );
+
+ALTER TABLE t_ong
+    ADD CONSTRAINT t_ong_t_endereco_ong_fk FOREIGN KEY ( id_endereco )
+        REFERENCES t_endereco_ong ( id_endereco );

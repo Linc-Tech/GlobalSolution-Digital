@@ -32,11 +32,27 @@
 </header>
 
  <div class="container-dashboard">
-   <h1>Valor das Doações</h1>
-   <p th:text="${arrecadado}" />
+   <div class="container-collections">
+     <div class="collections-header">
+       <h1 class="dashboard-title">Valores</h1>
+       <p class="dashboard-subtitle">arrecadados</p>
+     </div>
 
-   <h1>Quantidade de Doações</h1>
-   <p th:text="${quantidadeDoacoes}" />
+     <div class="collections-subtitle">
+       <p class="dashboard-p">R$</p>
+       <p class="dashboard-p margin-money" th:text="${arrecadado}" />
+     </div>
+   </div>
+
+   <div class="container-donations">
+     <div class="dontaions-header">
+       <h1 class="dashboard-title">Qtd</h1>
+       <p class="dashboard-subtitle">doações</p>
+     </div>
+     <div class="donations-subtitle">
+       <p class="dashboard-p" th:text="${quantidadeDoacoes}" />
+     </div>
+   </div>
 
  </div>
 </body>

@@ -37,15 +37,8 @@ public class Donation {
     public boolean getConfirmation() {
         return confirmation;
     }
-
-    @Override
-    public String toString() {
-        return "Donation{" +
-                "id=" + id +
-                ", value=" + value +
-                ", confirmation=" + confirmation +
-                ", ong=" + ong +
-                ", donator=" + donator +
-                '}';
-    }
+    
+    @Column(name="pendente", nullable = false)
+	private boolean pending;
+    
 }

@@ -3,6 +3,8 @@ package fiap.com.br.globalsolution.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import fiap.com.br.globalsolution.model.Ong;
+
 @Controller
 public class LoginController {
 
@@ -12,7 +14,7 @@ public class LoginController {
     }
 
     @GetMapping("/registration")
-    public String openRegistrationPage() {
+    public String openRegistrationPage(Ong ong) {
         return "pages/onboarding/registration";
     }
 
@@ -21,5 +23,9 @@ public class LoginController {
         return "index";
     }
 
+    @GetMapping("/")
+    public String openIndexPageWithNoUrl() {
+        return "index";
+    }
 
 }
